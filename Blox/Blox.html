@@ -1,0 +1,68 @@
+<!-- /blox/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blox</title>
+  <style>
+    body {
+      margin: 0;
+      background: #121212;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      background: #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Block {
+  constructor(x, y, size, color) {
+    this.x = x;
+    this.y = y;
+    this.vy = 0;
+    this.size = size;
+    this.color = color;
+  }
+  update() {
+    this.vy += 0.4; // gravity
+    this.y += this.vy;
+    if (this.y + this.size > canvas.height) {
+      this.y = canvas.height - this.size;
+      this.vy *= -0.4;
+    }
+  }
+  draw() {
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.x, this.y, this.size, this.size);
+  }
+}
+
+const blocks = [];
+canvas.addEventListener("click", e => {
+  const size = 30 + Math.random() * 20;
+  const color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+  blocks.push(new Block(e.clientX - size / 2, e.clientY - size / 2, size, color));
+});
+
+function animate() {
+  ctx.fillStyle = "#121212";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  blocks.forEach(b => {
+    b.update();
+    b.draw();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>
