@@ -2,98 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>mihec708.xyz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0f0f0f;
-      --text: #ffffff;
-      --hover: #08f;
-      --shadow: rgba(0, 0, 0, 0.6);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-    }
-
     body {
-      background-color: var(--bg);
-      color: var(--text);
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      padding: 3rem 1rem;
     }
 
     h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
+      font-size: 3rem;
       margin-bottom: 4rem;
-      text-shadow: 0 4px 12px var(--shadow);
+      text-shadow: 0 0 10px rgba(255,255,255,0.05);
     }
 
-    .nav-list {
+    .link-box {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 2.8rem;
+      gap: 1.5rem;
+      background-color: #1a1a1a;
+      padding: 2.5rem 4rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
 
-    .nav-list a {
+    a {
+      color: #e0e0e0;
+      font-size: 1.5rem;
       text-decoration: none;
-      color: var(--text);
-      font-size: 1.6rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      padding: 0.3rem 1.2rem;
-      border-radius: 12px;
+      text-align: center;
+      padding: 0.6rem 2rem;
+      border-radius: 0.8rem;
+      background-color: #2a2a2a;
       transition: all 0.2s ease;
-      text-shadow: 0 2px 6px var(--shadow);
     }
 
-    .nav-list a:hover {
-      color: var(--hover);
-      background-color: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    a:hover {
+      background-color: #3a3a3a;
       transform: scale(1.03);
     }
 
     footer {
-      margin-top: auto;
-      padding-top: 5rem;
+      margin-top: 5rem;
+      color: gray;
       font-size: 0.9rem;
-      color: #888;
-      opacity: 0.4;
-      text-shadow: none;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 3rem;
-      }
-
-      .nav-list a {
-        font-size: 1.3rem;
-      }
     }
   </style>
 </head>
 <body>
-
   <h1>mihec708.xyz</h1>
-
-  <div class="nav-list">
-    <a href="/pixels">PIXEL REVEAL</a>
+  <div class="link-box">
+    <a href="/Blox">/Blox</a>
+    <a href="/Echo">/Echo</a>
+    <a href="/Matrix">/Matrix</a>
+    <a href="/Pixels">/Pixels</a>
   </div>
-
-  <footer>&copy; 2025 Miha Kenda — All rights reserved</footer>
-
+  <footer>© Miha Kenda</footer>
 </body>
 </html>
