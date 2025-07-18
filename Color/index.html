@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Color Picker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba(255,255,255,0.05);
+    }
+
+    canvas {
+      border-radius: 1rem;
+      max-width: 100%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      cursor: crosshair;
+    }
+
+    input[type="file"] {
+      padding: 0.6rem 1rem;
+      background-color: #1e1e1e;
+      border: none;
+      color: #e0e0e0;
+      border-radius: 0.8rem;
+      cursor: pointer;
+    }
+
+    #colorCode {
+      font-size: 1.2rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #1a1a1a;
+      border-radius: 0.8rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+  <h1>Color Picker</h1>
+  <input type="file" id="upload" accept="image/*" />
+  <canvas id="canvas"></canvas>
+  <div id="colorCode">Click the image to pick a color</div>
+
+  <script>
+    const upload = document.getElementById('upload');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const colorCode = document.getElementById('colorCode');
+
+    upload.addEventListener('change', function () {
+      const file = this.files[0];
+      if (!file) return;
+
+      const img = new Image();
+      img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = URL.createObjectURL(file);
+    });
+
+    canvas.addEventListener('click', function (e) {
+      const rect = canvas.getBoundingClientRect();
+      const x = Math.floor((e.clientX - rect.left));
+      const y = Math.floor((e.clientY - rect.top));
+      const pixel = ctx.getImageData(x, y, 1, 1).data;
+      const hex = `#${pixel[0].toString(16).padStart(2, '0')}${pixel[1].toString(16).padStart(2, '0')}${pixel[2].toString(16).padStart(2, '0')}`;
+      colorCode.textContent = `Picked Color: ${hex.toUpperCase()}`;
+      colorCode.style.backgroundColor = hex;
+    });
+  </script>
+</body>
+</html>
