@@ -1,0 +1,46 @@
+<!-- /echo/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sound</title>
+  <style>
+    body { margin: 0; background: #111; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+  const context = new AudioContext();
+  const source = context.createMediaStreamSource(stream);
+  const analyser = context.createAnalyser();
+  source.connect(analyser);
+  const data = new Uint8Array(analyser.frequencyBinCount);
+
+  function animate() {
+    analyser.getByteTimeDomainData(data);
+    ctx.fillStyle = "#111";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.strokeStyle = "#08f";
+    ctx.lineWidth = 2;
+    for (let i = 0; i < data.length; i++) {
+      const x = (i / data.length) * canvas.width;
+      const y = canvas.height / 2 + (data[i] - 128);
+      ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    requestAnimationFrame(animate);
+  }
+  animate();
+});
+</script>
+</body>
+</html>
