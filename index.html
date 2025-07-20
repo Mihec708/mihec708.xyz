@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>mihec708.xyz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -17,6 +17,8 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      padding: 2rem;
+      position: relative;
     }
 
     h1 {
@@ -33,6 +35,9 @@
       padding: 2.5rem 4rem;
       border-radius: 1.5rem;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 400px;
+      user-select: none;
     }
 
     a {
@@ -44,6 +49,7 @@
       border-radius: 0.8rem;
       background-color: #2a2a2a;
       transition: all 0.2s ease;
+      display: block;
     }
 
     a:hover {
@@ -51,22 +57,103 @@
       transform: scale(1.03);
     }
 
+    .socials-container {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .social-circle {
+      background-color: #1e1e1e;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .social-circle:hover {
+      background-color: #333;
+      transform: scale(1.1);
+    }
+
+    .social-circle img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(90%);
+      transition: filter 0.3s ease;
+    }
+
+    .social-circle:hover img {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(120%) contrast(110%);
+    }
+
     footer {
       margin-top: 5rem;
       color: gray;
       font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      user-select: none;
+    }
+
+    a.home-link {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      color: #e0e0e0;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      background: #111;
+      padding: 0.4rem 0.9rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 12px rgba(0,0,0,0.6);
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    a.home-link:hover {
+      background: #222;
     }
   </style>
 </head>
 <body>
+  <a href="https://mihec708.xyz" class="home-link" aria-label="Go to homepage">mihec708.xyz</a>
+
   <h1>mihec708.xyz</h1>
-  <div class="link-box">
+  <div class="link-box" role="navigation" aria-label="Main site navigation">
     <a href="/Blox">Blox</a>
     <a href="/Echo">Echo</a>
     <a href="/Matrix">Matrix</a>
     <a href="/Pixels">Pixels</a>
     <a href="/Color">Color Picker</a>
+    <a href="/Dates">Random Date</a>
   </div>
+
+   <div class="socials-container" aria-label="Social links">
+    <a href="https://ko-fi.com/mihec708" target="_blank" rel="noopener noreferrer" class="social-circle" title="Ko-fi">
+      <img src="https://www.svgrepo.com/show/330802/kofi.svg" alt="Ko-fi" />
+    </a>
+    <a href="https://youtube.com/@mihec_708" target="_blank" rel="noopener noreferrer" class="social-circle" title="YouTube">
+      <img src="https://www.svgrepo.com/show/349630/sc-youtube.svg" alt="YouTube" />
+    </a>
+    <a href="https://modrinth.com/user/mihec708" target="_blank" rel="noopener noreferrer" class="social-circle" title="Modrinth">
+      <img src="https://files.svgcdn.io/simple-icons/modrinth.png" alt="Modrinth" />
+    </a>
+    <a href="https://patreon.com/mihec708" target="_blank" rel="noopener noreferrer" class="social-circle" title="Patreon">
+      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/patreon-icon.png" alt="Patreon" />
+    </a>
+  </div>
+
   <footer>© Miha Kenda</footer>
 </body>
 </html>
